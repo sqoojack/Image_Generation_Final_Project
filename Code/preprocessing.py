@@ -1,5 +1,5 @@
 
-# python preprocessing.py
+# python Code/preprocessing.py
 # 將圖片都改成.png檔, 解析度都統一改成512x512, 大小也是512x512, 以確保模型輸入的一致性
 import os
 from PIL import Image

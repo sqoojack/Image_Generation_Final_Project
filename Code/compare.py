@@ -1,5 +1,5 @@
 
-# python compare.py
+# python Code/compare.py
 # 用來做出比較圖
 import os
 from PIL import Image, ImageDraw, ImageFont

@@ -1,5 +1,5 @@
 
-# python call_InstructP2P.py
+# python Code/call_InstructP2P.py
 import os
 import torch
 from diffusers import StableDiffusionInstructPix2PixPipeline

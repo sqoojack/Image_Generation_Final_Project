@@ -1,5 +1,5 @@
 
-# python3 call_nano.py
+# python Code/call_nano.py
 import os
 import time
 from google import genai
