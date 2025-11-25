@@ -12,7 +12,7 @@ def create_column_comparison():
     
     # --- 設定樣式順序 ---
     # 垂直堆疊順序: [原圖] -> [Lego] -> [Van Gogh]
-    styles = ["lego", "van_gogh"] 
+    styles = ["lego", "van_gogh", "water_color", "robot", "solid gold"] 
     
     # --- 設定顯示參數 ---
     target_width = 400   # 每一張圖的寬度 (也是每一行的寬度)

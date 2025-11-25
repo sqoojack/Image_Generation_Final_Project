@@ -35,6 +35,9 @@ def generate_dataset_png_only():
     prompt_mapping = {
         "lego": "Transform this image into a Lego style.",
         "van_gogh": "Redraw this image in the style of Van Gogh's Starry Night.",
+        "water_color": "Turn this into a watercolor painting",
+        "robot": "Turn this into a futuristic robot",
+        "solid gold": "Turn this into a solid gold statue"
     }
 
     # 取得所有 PNG 檔案
