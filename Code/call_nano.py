@@ -19,25 +19,36 @@ def get_api_key(filepath="API_key.txt"):
 os.environ["GOOGLE_API_KEY"] = get_api_key()
 
 client = genai.Client()
+LANDSCAPE_KEYWORDS = ["forest", "beach", "street", "grass", "city"]
 
 # MODEL_ID = "gemini-3-pro-image-preview" 
 MODEL_ID = "gemini-2.5-flash-image"
 # MODEL_ID = "gemini-2.5-pro"
 
 def generate_dataset_png_only():
-    source_dir = "before_images"
-    output_dir = "after_images"
+    source_dir = "before_images_AI"
+    output_dir = "after_images_AI"
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     # Prompt 設定
-    prompt_mapping = {
-        "lego": "Transform this image into a Lego style.",
+    object_prompt_mapping = {
+        # "lego": "Transform this image into a Lego style.",
+        "Studio Ghibli": "Redraw this in the style of a Studio Ghibli anime movie, hand-painted background.",
         "van_gogh": "Redraw this image in the style of Van Gogh's Starry Night.",
-        "water_color": "Turn this into a watercolor painting",
+        # "water_color": "Turn this into a watercolor painting",
+        "Claymation": "Turn this into a claymation style like Wallace and Gromit.",
         "robot": "Turn this into a futuristic robot",
         "solid gold": "Turn this into a solid gold statue"
+    }
+    
+    landscape_prompt_mapping = {
+        "winter": "Make it a snowy winter scene",
+        "mars": "Turn the environment into the surface of Mars",
+        "ghibli": "Turn this into a Studio Ghibli anime background",
+        "minecraft": "Turn this into a Minecraft voxel world",
+        "sunset": "Make it a sunset scene with golden hour lighting"
     }
 
     # 取得所有 PNG 檔案
@@ -47,13 +58,19 @@ def generate_dataset_png_only():
         print(f"錯誤: {source_dir} 資料夾中沒有 PNG 圖片。")
         return
 
-    total_tasks = len(image_files) * len(prompt_mapping)
+    total_tasks = len(image_files) * len(object_prompt_mapping)
 
     # 建立進度條
     with tqdm(total=total_tasks, unit="img", desc="Generating") as pbar:
         
         for filename in image_files:
             file_path = os.path.join(source_dir, filename)
+            
+            is_landscape = any(keyword in filename.lower() for keyword in LANDSCAPE_KEYWORDS)
+            if is_landscape:
+                prompt_mapping = landscape_prompt_mapping
+            else:
+                prompt_mapping = object_prompt_mapping
             
             # 1. 使用 PIL 讀取圖片
             try:

@@ -15,8 +15,9 @@
 建立 API_key.txt，內容貼上 Google API Key
 
 ### 4. 執行生成:
-```python Code/call_nano.py```
-結果會存在 after_images/
+```python Code/call_nano.py -mode object```
+```python Code/call_nano.py -mode landscape```
+結果會存在 after_object_images/ 以及 after_landscape_images/
 
 
 ### 5. 產出比較圖:

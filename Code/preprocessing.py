@@ -57,6 +57,6 @@ def preprocess_images(source_folder, target_folder, target_size=512):
             print(f"Error processing {filename}: {e}")
 
 if __name__ == "__main__":
-    source_folder = "raw_before_images"    # 把原始大圖放在這個資料夾
-    target_folder = "before_images"  # 處理好的圖會放在這個資料夾
+    source_folder = "raw_before_images_AI"    # 把原始大圖放在這個資料夾
+    target_folder = "before_images_AI"  # 處理好的圖會放在這個資料夾
     preprocess_images(source_folder=source_folder, target_folder=target_folder)
